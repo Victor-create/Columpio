@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.1205252712308347 -0.9865294620579039 -0.11060415673235968 4.784665660280063
-  position 2.2073785093075657 0.8741423411807813 0.3002391198739659
+  orientation 0.0016795538813152496 -0.9919894362114384 -0.12630968903323442 3.167972309837061
+  position 0.12878229565625232 1.3006977885188358 -2.9503567317285615
 }
 TexturedBackground {
 }
@@ -12,6 +12,7 @@ TexturedBackgroundLight {
 Floor {
 }
 Solid {
+  translation -0.009659855687357943 0 -0.034079142655929096
   children [
     Group {
       children [
@@ -21,15 +22,15 @@ Solid {
               translation 0 0.356 0
               rotation 1 0 0 0.5235996938995747
               children [
-                Shape {
-                  appearance DEF ColorCylin PBRAppearance {
+                DEF Cylinder Shape {
+                  appearance PBRAppearance {
                     baseColor 0.7568627450980392 0.49019607843137253 0.06666666666666667
                     roughness 1
                     metalness 0
                   }
-                  geometry DEF Cylindro1 Cylinder {
+                  geometry Cylinder {
                     height 0.7999999999999999
-                    radius 0.019999999999999997
+                    radius 0.03
                   }
                 }
               ]
@@ -38,28 +39,92 @@ Solid {
               translation 0 0.358 0.4
               rotation 1 0 0 -0.5236003061004253
               children [
-                Solid {
-                  translation 0 0.05 -0.2
-                  rotation 1 0 0 5.23598774
-                  children [
-                    Shape {
-                      appearance PBRAppearance {
-                        baseColor 0.807843137254902 0.3607843137254902 0
-                        roughness 1
-                        metalness 0
-                      }
-                      geometry Cylinder {
-                        height 0.45
-                        radius 0.019999999999999997
-                      }
-                    }
-                  ]
-                }
+                USE Cylinder
+              ]
+            }
+            Transform {
+              translation 0 0.27 0.19000000004794895
+              rotation 1 0 0 1.5707963220000003
+              children [
                 Shape {
-                  appearance USE ColorCylin
-                  geometry USE Cylindro1
+                  appearance PBRAppearance {
+                    baseColor 0.6431372549019608 0 0
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Cylinder {
+                    height 0.5
+                    radius 0.019999999999999997
+                  }
                 }
               ]
+            }
+          ]
+        }
+        Transform {
+          translation 1 0 0
+          children [
+            USE A
+          ]
+        }
+        Solid {
+          translation 0.5 0.6900000000000001 0.19999999999999998
+          rotation -0.5773502620877834 -0.5773502692801284 0.5773502762009656 4.188790204514883
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0 0
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 1
+                radius 0.03
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+              }
+              endPoint Solid {
+                translation 0 0 0.04
+                children [
+                  Shape {
+                    appearance PBRAppearance {
+                      baseColor 0.7568627450980392 0.49019607843137253 0.06666666666666667
+                      roughness 1
+                      metalness 0.9
+                    }
+                    geometry Box {
+                      size 0.4 0.1 0.019999999999999997
+                    }
+                  }
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                    }
+                    endPoint Solid {
+                      translation 0 0 0.16
+                      rotation 1 0 0 1.5707963220000003
+                      children [
+                        Shape {
+                          appearance PBRAppearance {
+                            baseColor 0.9882352941176471 0.9137254901960784 0.30980392156862746
+                            roughness 1
+                            metalness 0
+                          }
+                          geometry Cylinder {
+                            height 0.30000000000000004
+                            radius 0.03
+                          }
+                        }
+                      ]
+                      physics Physics {
+                      }
+                    }
+                  }
+                ]
+                physics Physics {
+                }
+              }
             }
           ]
         }
